@@ -139,10 +139,10 @@ public class Demo {
         for (Integer i : properties.keySet()) {
             if (count >= i) {
                 //添加描述
-                textArea.append(properties.get(i) + "\r\n");
+                textArea.setText(textArea.getText()+properties.get(i) + "\r\n");
             } else {
                 //删除描述
-                textArea.setText(textArea.getText().replace(properties.get(i), ""));
+                textArea.setText(textArea.getText().replace(properties.get(i)+ "\r\n", ""));
             }
         }
     }
