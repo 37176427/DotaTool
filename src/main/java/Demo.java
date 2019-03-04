@@ -16,7 +16,6 @@ import java.util.TreeMap;
  **/
 public class Demo {
     private JPanel Panel;
-    private JTextField title;
     private JButton closeBtn;
     private JCheckBox FuWangCb;
     private JCheckBox MeiHuoMoNvCb;
@@ -82,6 +81,7 @@ public class Demo {
     private JCheckBox MiTuanCb;
     private JCheckBox DiJingGongChengShiCb;
     private JCheckBox SiWangXianZhiCb;
+    private JLabel title;
     //属性池
     private HashMap<Spec, Integer> specMap;
     //已点击棋子
@@ -139,10 +139,12 @@ public class Demo {
         for (Integer i : properties.keySet()) {
             if (count >= i) {
                 //添加描述
-                textArea.setText(textArea.getText()+properties.get(i) + "\r\n");
+                if (!textArea.getText().contains(properties.get(i))) {
+                    textArea.setText(textArea.getText() + properties.get(i) + "\r\n");
+                }//else 属性已存在不添加
             } else {
                 //删除描述
-                textArea.setText(textArea.getText().replace(properties.get(i)+ "\r\n", ""));
+                textArea.setText(textArea.getText().replace(properties.get(i) + "\r\n", ""));
             }
         }
     }
@@ -153,6 +155,7 @@ public class Demo {
         JFrame frame = new JFrame("Demo");
         frame.setContentPane(new Demo().Panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setBounds(900, 300, 1300, 900);
         frame.pack();
         frame.setVisible(true);
     }
