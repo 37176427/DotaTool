@@ -12,6 +12,6 @@ public class SaManJiSi extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(2, "战斗开始时将一个随机敌方棋子变成青蛙，持续6秒");
+        this.properties.put(2, "2萨满祭司：战斗开始时将一个随机敌方棋子变成青蛙，持续6秒");
     }
 }

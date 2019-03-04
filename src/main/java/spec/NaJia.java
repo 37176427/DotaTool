@@ -12,7 +12,7 @@ public class NaJia extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(2, "使所有友方的魔法抗性+20");
-        this.properties.put(4, "使所有友方的魔法抗性+40");
+        this.properties.put(2, "2娜迦：使所有友方的魔法抗性+30");
+        this.properties.put(4, "4娜迦：使所有友方的魔法抗性+30");
     }
 }

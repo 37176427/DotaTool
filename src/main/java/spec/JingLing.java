@@ -12,8 +12,8 @@ public class JingLing extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(2, "所有右方精灵有+20%几率闪避敌人的攻击");
-        this.properties.put(4, "所有右方精灵有+20%几率闪避敌人的攻击");
-        this.properties.put(6, "所有右方精灵有+20%几率闪避敌人的攻击");
+        this.properties.put(2, "2精灵：所有右方精灵有+20%几率闪避敌人的攻击");
+        this.properties.put(4, "4精灵：所有右方精灵有+20%几率闪避敌人的攻击");
+        this.properties.put(6, "6精灵：所有右方精灵有+20%几率闪避敌人的攻击");
     }
 }

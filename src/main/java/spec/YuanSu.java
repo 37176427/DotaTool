@@ -12,7 +12,7 @@ public class YuanSu extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(2, "所有元素攻击时有+20%几率石化敌方");
-        this.properties.put(4, "所有元素攻击时有+20%几率石化敌方");
+        this.properties.put(2, "2元素：所有元素攻击时有+20%几率石化敌方");
+        this.properties.put(4, "4元素：所有元素攻击时有+20%几率石化敌方");
     }
 }

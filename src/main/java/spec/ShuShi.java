@@ -12,7 +12,7 @@ public class ShuShi extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(3, "使所有友军术士的攻击附带20%吸血");
-        this.properties.put(6, "使所有友军的攻击附带30%吸血");
+        this.properties.put(3, "3术士：使所有友军术士的攻击附带20%吸血");
+        this.properties.put(6, "6术士：使所有友军的攻击附带30%吸血");
     }
 }

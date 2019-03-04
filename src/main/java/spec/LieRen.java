@@ -12,7 +12,7 @@ public class LieRen extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(3, "所有友方猎人的攻击力+25%");
-        this.properties.put(6, "所有友方猎人的攻击力+35%");
+        this.properties.put(3, "3猎人：所有友方猎人的攻击力+25%");
+        this.properties.put(6, "6猎人：所有友方猎人的攻击力+35%");
     }
 }

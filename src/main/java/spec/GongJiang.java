@@ -12,7 +12,7 @@ public class GongJiang extends Spec{
     }
 
     void setProperties() {
-        this.properties.put(2, "所有友方工匠的生命恢复速度+15");
-        this.properties.put(4, "所有友方工匠的生命恢复速度+25");
+        this.properties.put(2, "2工匠：所有友方工匠的生命恢复速度+15");
+        this.properties.put(4, "4工匠：所有友方工匠的生命恢复速度+25");
     }
 }

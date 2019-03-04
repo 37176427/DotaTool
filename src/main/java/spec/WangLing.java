@@ -12,7 +12,7 @@ public class WangLing extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(2, "使所有敌军护甲-5");
-        this.properties.put(4, "使所有敌军护甲-7");
+        this.properties.put(2, "2亡灵：使所有敌军护甲-5");
+        this.properties.put(4, "4亡灵：使所有敌军护甲-7");
     }
 }

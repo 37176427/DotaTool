@@ -12,7 +12,7 @@ public class DeLuYi extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(2, "场上有两个相同*德鲁伊就可以升级为**德鲁伊");
-        this.properties.put(4, "场上有两个相同**德鲁伊就可以升级为***德鲁伊");
+        this.properties.put(2, "2德鲁伊：场上有两个相同*德鲁伊就可以升级为**德鲁伊");
+        this.properties.put(4, "4德鲁伊：场上有两个相同**德鲁伊就可以升级为***德鲁伊");
     }
 }

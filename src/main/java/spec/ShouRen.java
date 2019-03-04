@@ -12,7 +12,7 @@ public class ShouRen extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(2, "所有友方兽人最大生命值+250");
-        this.properties.put(4, "所有友方兽人最大生命值+250");
+        this.properties.put(2, "2兽人：所有友方兽人最大生命值+250");
+        this.properties.put(4, "4兽人：所有友方兽人最大生命值+250");
     }
 }

@@ -12,7 +12,7 @@ public class ZhanShi extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(3, "所有友方战士护甲+8");
-        this.properties.put(6, "所有友方战士护甲+8");
+        this.properties.put(3, "3战士：所有友方战士护甲+8");
+        this.properties.put(6, "6战士：所有友方战士护甲+8");
     }
 }

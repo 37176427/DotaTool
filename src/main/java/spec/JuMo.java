@@ -12,7 +12,7 @@ public class JuMo extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(2, "所有友方巨魔的攻击速度+30");
-        this.properties.put(4, "所有友军的攻击速度+30");
+        this.properties.put(2, "2巨魔：所有友方巨魔的攻击速度+30");
+        this.properties.put(4, "4巨魔：所有友军的攻击速度+30");
     }
 }

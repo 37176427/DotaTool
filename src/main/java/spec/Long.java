@@ -12,6 +12,6 @@ public class Long extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(3, "所有友方龙的初始法力值为100");
+        this.properties.put(3, "3龙：所有友方龙的初始法力值为100");
     }
 }

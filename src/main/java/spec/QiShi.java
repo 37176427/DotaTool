@@ -12,8 +12,8 @@ public class QiShi extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(2, "所有友方骑士有+25%时间被减伤护盾庇护");
-        this.properties.put(4, "所有友方骑士有+35%时间被减伤护盾庇护");
-        this.properties.put(6, "所有友方骑士有+45%时间被减伤护盾庇护");
+        this.properties.put(2, "2骑士：所有友方骑士有+25%时间被减伤护盾庇护");
+        this.properties.put(4, "4骑士：所有友方骑士有+35%时间被减伤护盾庇护");
+        this.properties.put(6, "6骑士：所有友方骑士有+45%时间被减伤护盾庇护");
     }
 }

@@ -12,7 +12,7 @@ public class FaShi extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(3, "使所有敌军魔法抗性-40");
-        this.properties.put(6, "使所有敌军魔法抗性-40");
+        this.properties.put(3, "3法师：使所有敌军魔法抗性-40");
+        this.properties.put(6, "6法师：使所有敌军魔法抗性-40");
     }
 }

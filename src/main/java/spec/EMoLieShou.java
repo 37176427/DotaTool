@@ -12,7 +12,7 @@ public class EMoLieShou extends Spec {
     }
 
     void setProperties() {
-        this.properties.put(1, "此棋子视为敌方的一个恶魔");
-        this.properties.put(2, "所有友方恶魔视为同一种恶魔");
+        this.properties.put(1, "1恶魔猎手：此棋子视为敌方的一个恶魔");
+        this.properties.put(2, "2恶魔猎手：所有友方恶魔视为同一种恶魔");
     }
 }
