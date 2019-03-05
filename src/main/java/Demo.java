@@ -3,6 +3,7 @@ import spec.AiRen;
 import spec.Spec;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -16,7 +17,6 @@ import java.util.TreeMap;
  **/
 public class Demo {
     private JPanel Panel;
-    private JButton closeBtn;
     private JCheckBox FuWangCb;
     private JCheckBox MeiHuoMoNvCb;
     private JCheckBox ShiRenMoMoFaShiCb;
@@ -81,7 +81,6 @@ public class Demo {
     private JCheckBox MiTuanCb;
     private JCheckBox DiJingGongChengShiCb;
     private JCheckBox SiWangXianZhiCb;
-    private JLabel title;
     //属性池
     private HashMap<Spec, Integer> specMap;
     //已点击棋子
@@ -92,22 +91,39 @@ public class Demo {
     }
 
 
+    public static void main(String[] args) {
+
+        JFrame frame = new JFrame("自走棋羁绊查看器  by.heasy");
+        frame.setContentPane(new Demo().Panel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setLocationRelativeTo(null);
+        frame.setBounds(900,100,900,1500);
+        frame.setVisible(true);
+        frame.setResizable(false);
+        frame.pack();
+    }
+
+
     //添加棋子 1检测棋子数量 2添加属性与棋子map
-    private void addChess(Chess chess) {
+    private boolean addChess(Chess chess) {
         if (chesses.size() != 10) {
             chesses.add(chess);
             addSpec(chess.getSpec());
+            return true;
         } else {
             System.out.println("棋子数量已达上限！");
+            return false;
         }
     }
 
-    private void delChess(Chess chess) {
+    private boolean delChess(Chess chess) {
         if (chesses.size() != 0) {
             chesses.remove(chess);
             delSpec(chess.getSpec());
+            return true;
         } else {
             System.out.println("删除失败！不能再删除了");
+            return false;
         }
     }
 
@@ -150,32 +166,20 @@ public class Demo {
     }
 
 
-    public static void main(String[] args) {
-
-        JFrame frame = new JFrame("Demo");
-        frame.setContentPane(new Demo().Panel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setBounds(900, 300, 1300, 900);
-        frame.pack();
-        frame.setVisible(true);
-    }
-
-
     private void init() {
         specMap = new HashMap<Spec, Integer>();
         chesses = new HashSet<Chess>();
-        closeBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
         FuWangCb.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 FuWang o = FuWang.getInstacne();
                 if (FuWangCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        FuWangCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        FuWangCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -183,9 +187,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 MeiHuoMoNv o = MeiHuoMoNv.getInstacne();
                 if (MeiHuoMoNvCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        MeiHuoMoNvCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        MeiHuoMoNvCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -193,9 +201,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 ShiRenMoMoFaShi o = ShiRenMoMoFaShi.getInstacne();
                 if (ShiRenMoMoFaShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        ShiRenMoMoFaShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        ShiRenMoMoFaShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -203,9 +215,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 JuYaHaiMin o = JuYaHaiMin.getInstacne();
                 if (JuYaHaiMinCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        JuYaHaiMinCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        JuYaHaiMinCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -213,9 +229,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 ZhuoErYouXia o = ZhuoErYouXia.getInstacne();
                 if (ZhuoErYouXiaCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        ZhuoErYouXiaCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        ZhuoErYouXiaCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -223,9 +243,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 ShangJinLieRen o = ShangJinLieRen.getInstacne();
                 if (ShangJinLieRenCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        ShangJinLieRenCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        ShangJinLieRenCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -233,9 +257,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 FaTiaoJiShi o = FaTiaoJiShi.getInstacne();
                 if (FaTiaoJiShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        FaTiaoJiShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        FaTiaoJiShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -243,9 +271,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 AnYingSaMan o = AnYingSaMan.getInstacne();
                 if (AnYingSaManCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        AnYingSaManCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        AnYingSaManCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -253,9 +285,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 BianFuQiShi o = BianFuQiShi.getInstacne();
                 if (BianFuQiShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        BianFuQiShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        BianFuQiShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -263,9 +299,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 XiuBuJiang o = XiuBuJiang.getInstacne();
                 if (XiuBuJiangCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        XiuBuJiangCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        XiuBuJiangCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -273,9 +313,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 DiFaShi o = DiFaShi.getInstacne();
                 if (DiFaShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        DiFaShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        DiFaShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -283,9 +327,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 XiaoXiao o = XiaoXiao.getInstacne();
                 if (XiaoXiaoCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        XiaoXiaoCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        XiaoXiaoCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -293,9 +341,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 ShuiJingShiNv o = ShuiJingShiNv.getInstacne();
                 if (ShuiJingShiNvCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        ShuiJingShiNvCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        ShuiJingShiNvCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -303,9 +355,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 ShouWang o = ShouWang.getInstacne();
                 if (ShouWangCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        ShouWangCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        ShouWangCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -313,9 +369,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 JianSheng o = JianSheng.getInstacne();
                 if (JianShengCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        JianShengCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        JianShengCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -323,9 +383,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 FaMuJi o = FaMuJi.getInstacne();
                 if (FaMuJiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        FaMuJiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        FaMuJiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -333,9 +397,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 TongKuNvWang o = TongKuNvWang.getInstacne();
                 if (TongKuNvWangCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        TongKuNvWangCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        TongKuNvWangCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -343,9 +411,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 JingLingLong o = JingLingLong.getInstacne();
                 if (JingLingLongCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        JingLingLongCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        JingLingLongCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -353,9 +425,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 WuYi o = WuYi.getInstacne();
                 if (WuYiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        WuYiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        WuYiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -363,9 +439,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 YuRenShouWei o = YuRenShouWei.getInstacne();
                 if (YuRenShouWeiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        YuRenShouWeiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        YuRenShouWeiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -373,9 +453,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 HunDunQiShi o = HunDunQiShi.getInstacne();
                 if (HunDunQiShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        HunDunQiShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        HunDunQiShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -383,9 +467,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 ShuJingWeiShi o = ShuJingWeiShi.getInstacne();
                 if (ShuJingWeiShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        ShuJingWeiShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        ShuJingWeiShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -393,9 +481,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 YueZhiQiShi o = YueZhiQiShi.getInstacne();
                 if (YueZhiQiShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        YueZhiQiShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        YueZhiQiShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -403,9 +495,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 XianZhi o = XianZhi.getInstacne();
                 if (XianZhiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        XianZhiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        XianZhiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -413,9 +509,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 BianTiJingLing o = BianTiJingLing.getInstacne();
                 if (BianTiJingLingCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        BianTiJingLingCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        BianTiJingLingCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -423,9 +523,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 YuRenYeXingZhe o = YuRenYeXingZhe.getInstacne();
                 if (YuRenYeXingZheCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        YuRenYeXingZheCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        YuRenYeXingZheCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -433,9 +537,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 LangRen o = LangRen.getInstacne();
                 if (LangRenCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        LangRenCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        LangRenCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -443,9 +551,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 JuDuShuShi o = JuDuShuShi.getInstacne();
                 if (JuDuShuShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        JuDuShuShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        JuDuShuShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -453,9 +565,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 QuanNengQiShi o = QuanNengQiShi.getInstacne();
                 if (QuanNengQiShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        QuanNengQiShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        QuanNengQiShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -463,9 +579,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 ShanDianYouHun o = ShanDianYouHun.getInstacne();
                 if (ShanDianYouHunCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        ShanDianYouHunCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        ShanDianYouHunCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -473,9 +593,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 FengXingZhe o = FengXingZhe.getInstacne();
                 if (FengXingZheCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        FengXingZheCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        FengXingZheCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -483,9 +607,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 HuanYingCiKe o = HuanYingCiKe.getInstacne();
                 if (HuanYingCiKeCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        HuanYingCiKeCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        HuanYingCiKeCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -493,9 +621,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 SiWangQiShi o = SiWangQiShi.getInstacne();
                 if (SiWangQiShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        SiWangQiShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        SiWangQiShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -503,9 +635,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 ShaWang o = ShaWang.getInstacne();
                 if (ShaWangCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        ShaWangCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        ShaWangCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -513,9 +649,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 JuJiShou o = JuJiShou.getInstacne();
                 if (JuJiShouCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        JuJiShouCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        JuJiShouCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -523,9 +663,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 MingJieYaLong o = MingJieYaLong.getInstacne();
                 if (MingJieYaLongCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        MingJieYaLongCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        MingJieYaLongCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -533,9 +677,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 YingMo o = YingMo.getInstacne();
                 if (YingMoCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        YingMoCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        YingMoCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -543,9 +691,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 XiuDouMoDaoShi o = XiuDouMoDaoShi.getInstacne();
                 if (XiuDouMoDaoShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        XiuDouMoDaoShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        XiuDouMoDaoShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -553,9 +705,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 LingHunShouWei o = LingHunShouWei.getInstacne();
                 if (LingHunShouWeiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        LingHunShouWeiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        LingHunShouWeiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -563,9 +719,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 YinXingCiKe o = YinXingCiKe.getInstacne();
                 if (YinXingCiKeCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        YinXingCiKeCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        YinXingCiKeCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -573,9 +733,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 YueZhiNvJiSi o = YueZhiNvJiSi.getInstacne();
                 if (YueZhiNvJiSiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        YueZhiNvJiSiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        YueZhiNvJiSiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -583,9 +747,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 MoRiShiZhe o = MoRiShiZhe.getInstacne();
                 if (MoRiShiZheCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        MoRiShiZheCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        MoRiShiZheCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -593,9 +761,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 HaiJunShangJiang o = HaiJunShangJiang.getInstacne();
                 if (HaiJunShangJiangCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        HaiJunShangJiangCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        HaiJunShangJiangCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -603,9 +775,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 JuMoZhanJiang o = JuMoZhanJiang.getInstacne();
                 if (JuMoZhanJiangCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        JuMoZhanJiangCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        JuMoZhanJiangCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -613,9 +789,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 GuangZhiShouWei o = GuangZhiShouWei.getInstacne();
                 if (GuangZhiShouWeiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        GuangZhiShouWeiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        GuangZhiShouWeiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -623,9 +803,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 SiLingFaShi o = SiLingFaShi.getInstacne();
                 if (SiLingFaShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        SiLingFaShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        SiLingFaShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -633,9 +817,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 ShengTangCiKe o = ShengTangCiKe.getInstacne();
                 if (ShengTangCiKeCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        ShengTangCiKeCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        ShengTangCiKeCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -643,9 +831,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 LianJinShuShi o = LianJinShuShi.getInstacne();
                 if (LianJinShuShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        LianJinShuShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        LianJinShuShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -653,9 +845,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 GanRaoZhe o = GanRaoZhe.getInstacne();
                 if (GanRaoZheCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        GanRaoZheCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        GanRaoZheCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -663,9 +859,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 SheFaNvYao o = SheFaNvYao.getInstacne();
                 if (SheFaNvYaoCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        SheFaNvYaoCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        SheFaNvYaoCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -673,9 +873,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 LongQiShi o = LongQiShi.getInstacne();
                 if (LongQiShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        LongQiShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        LongQiShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -683,9 +887,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 LiZhuaDeLuYi o = LiZhuaDeLuYi.getInstacne();
                 if (LiZhuaDeLuYiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        LiZhuaDeLuYiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        LiZhuaDeLuYiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -693,9 +901,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 AiRenZhiShengJi o = AiRenZhiShengJi.getInstacne();
                 if (AiRenZhiShengJiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        AiRenZhiShengJiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        AiRenZhiShengJiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -703,9 +915,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 WuYao o = WuYao.getInstacne();
                 if (WuYaoCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        WuYaoCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        WuYaoCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -713,9 +929,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 ChaoXiLieRen o = ChaoXiLieRen.getInstacne();
                 if (ChaoXiLieRenCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        ChaoXiLieRenCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        ChaoXiLieRenCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -723,9 +943,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 MiTuan o = MiTuan.getInstacne();
                 if (MiTuanCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        MiTuanCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        MiTuanCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -733,9 +957,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 DiJingGongChengShi o = DiJingGongChengShi.getInstacne();
                 if (DiJingGongChengShiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        DiJingGongChengShiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        DiJingGongChengShiCb.setSelected(true);
+                    }
                 }
             }
         });
@@ -743,9 +971,13 @@ public class Demo {
             public void actionPerformed(ActionEvent e) {
                 SiWangXianZhi o = SiWangXianZhi.getInstacne();
                 if (SiWangXianZhiCb.isSelected()) {
-                    addChess(o);
+                    if (!addChess(o)) {
+                        SiWangXianZhiCb.setSelected(false);
+                    }
                 } else {
-                    delChess(o);
+                    if (!delChess(o)) {
+                        SiWangXianZhiCb.setSelected(true);
+                    }
                 }
             }
         });
