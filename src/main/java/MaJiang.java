@@ -61,7 +61,8 @@ public class MaJiang {
     private JLabel l14;
     private JLabel tip;
 
-    //放牌的列表
+    private static List<iCard> originList = new LinkedList<>();
+    //放牌整理好的列表
     private static List<iCard> list = new LinkedList<>();
     //放展示页面的列表
     private static List<JLabel> labels = new LinkedList<>();
@@ -71,7 +72,14 @@ public class MaJiang {
     }
 
     public static void main(String[] args) {
-
+        try
+        {
+            org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+        }
+        catch(Exception e)
+        {
+            //TODO exception
+        }
         JFrame frame = new JFrame("majiang  by.heasy");
         frame.setContentPane(new MaJiang().p);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,6 +102,7 @@ public class MaJiang {
             check();
             list.add(card);
             sortList();
+            originList.add(card);
         } catch (Exception e) {
             l1.setText(e.getMessage());
         }
@@ -122,9 +131,10 @@ public class MaJiang {
         for (; i < list.size(); i++) {
             labels.get(i).setVisible(true);
             ImageIcon imageIcon = new ImageIcon(Toolkit.getDefaultToolkit().
-                    getImage(getClass().getResource("image\\1.GIF")));
-            labels.get(i).setIcon(imageIcon);
+                    getImage(getClass().getResource("close.png")));
 
+            labels.get(i).setIcon(imageIcon);
+            labels.get(i).setSize(10,20);
             labels.get(i).setText(list.get(i).toString());
         }
         if (i < labels.size()) {

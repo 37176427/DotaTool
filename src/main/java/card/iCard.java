@@ -1,7 +1,5 @@
 package card;
 
-import java.util.Comparator;
-
 /**
  * 描述 ：
  * 作者 ：WYH
