@@ -72,13 +72,9 @@ public class MaJiang {
     }
 
     public static void main(String[] args) {
-        try
-        {
+        try {
             org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
-        }
-        catch(Exception e)
-        {
-            //TODO exception
+        } catch (Exception ignored) {
         }
         JFrame frame = new JFrame("majiang  by.heasy");
         frame.setContentPane(new MaJiang().p);
@@ -134,7 +130,7 @@ public class MaJiang {
                     getImage(getClass().getResource("close.png")));
 
             labels.get(i).setIcon(imageIcon);
-            labels.get(i).setSize(10,20);
+            labels.get(i).setSize(10, 20);
             labels.get(i).setText(list.get(i).toString());
         }
         if (i < labels.size()) {
