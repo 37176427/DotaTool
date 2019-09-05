@@ -1,20 +1,20 @@
 package card;
 
 /**
- * 描述 ：
+ * 描述 ：麻将牌
  * 作者 ：WYH
  * 时间 ：2019/8/30 15:52
  **/
-public class iCard implements Comparable<iCard> {
+public final class Card implements Comparable<Card> {
     private int point;
     private Type type;
 
-    public iCard(int point, Type type) {
+    public Card(int point, Type type) {
         this.point = point;
         this.type = type;
     }
 
-    public int getPoint() {
+    public final int getPoint() {
         return point;
     }
 
@@ -22,7 +22,7 @@ public class iCard implements Comparable<iCard> {
         this.point = point;
     }
 
-    public Type getType() {
+    public final Type getType() {
         return type;
     }
 
@@ -30,9 +30,18 @@ public class iCard implements Comparable<iCard> {
         this.type = type;
     }
 
+    public String getValue() {
+        String t;
+        int code = type.getCode();
+        if (code == 0) t = "z";
+        else if (code == 1) t = "w";
+        else if (code == 2) t = "t";
+        else t = "b";
+        return point + "" + t;
+    }
 
     @Override
-    public int compareTo(iCard c2) {
+    public int compareTo(Card c2) {
         if (this.getType().getCode() > c2.getType().getCode()) {
             return 1;
         } else if (this.getType().getCode() < c2.getType().getCode()) {
@@ -49,7 +58,7 @@ public class iCard implements Comparable<iCard> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        iCard card = (iCard) o;
+        Card card = (Card) o;
 
         if (point != card.point) return false;
         return type.getCode() == card.type.getCode();
@@ -64,6 +73,7 @@ public class iCard implements Comparable<iCard> {
 
     @Override
     public String toString() {
+        if (point == 0) return type.getDesc();
         return point + type.getDesc();
     }
 }
