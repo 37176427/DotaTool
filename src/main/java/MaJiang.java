@@ -81,7 +81,7 @@ public class MaJiang {
     private JLabel info;
     private JButton breset;
     private JLabel baoTip;
-    private JLabel baoLable;
+    private JLabel baolabel;
     private JLabel explain;
     private JButton bExit;
     private JLabel itip2;
@@ -201,7 +201,9 @@ public class MaJiang {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //frame.setLocationRelativeTo(null);
         //frame.getGraphicsConfiguration().getDevice().setFullScreenWindow(frame);
-        frame.setBounds(270, 270, 1366, 768);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //1281*328
+        frame.setBounds((screenSize.width - 1280) / 2, (screenSize.height - 330) / 2, 1280, 330);
         frame.setVisible(true);
         frame.setResizable(true);
         frame.pack();
@@ -254,12 +256,12 @@ public class MaJiang {
             for (JLabel rLabel : rLabels) {
                 rLabel.setIcon(emptyIcon);
             }
-            useCardIndex.setText(String.valueOf(rlist.indexOf(card)+1));
+            useCardIndex.setText(String.valueOf(rlist.indexOf(card) + 1));
             Iterator<Card> rIterator = rlist.iterator();
             while (rIterator.hasNext()) {
                 if (rIterator.next().equals(card)) {
                     rIterator.remove();
-                    info.setText("删除牌："+card);
+                    info.setText("删除牌：" + card);
                     break;
                 }
             }
@@ -316,7 +318,7 @@ public class MaJiang {
             if (e.getButton() == MouseEvent.BUTTON1) {
                 addCard(card);
             } else if (e.getButton() == MouseEvent.BUTTON2) {
-                baoLable.setText(card.toString());
+                baolabel.setText(card.toString());
             } else if (e.getButton() == MouseEvent.BUTTON3) {
                 delRListCard(card);
                 delListCard(card);
@@ -325,7 +327,7 @@ public class MaJiang {
     }
 
     private void init() {
-        baoLable.setText("暂无");
+        baolabel.setText("暂无");
         info.setText("暂无");
         useCardIndex.setText("*");
         rlist = new LinkedList<>();
@@ -430,8 +432,10 @@ public class MaJiang {
                     delListCard(card);
                     return;
                 }
+                //点击无序列表时
                 Card delCard = map.get(index);
                 if (delCard == null) return;
+                useCardIndex.setText(index + 1 + "");
                 rlist.remove(index);
                 delListCard(delCard);
             }

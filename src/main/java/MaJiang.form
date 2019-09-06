@@ -552,7 +552,7 @@
           <text value="本局宝牌"/>
         </properties>
       </component>
-      <component id="6a10a" class="javax.swing.JLabel" binding="baoLable">
+      <component id="6a10a" class="javax.swing.JLabel" binding="baolabel">
         <constraints>
           <grid row="2" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
