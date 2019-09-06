@@ -221,6 +221,7 @@ public class MaJiang {
         if (!check()) return;
         list.add(card);
         rlist.add(card);
+        info.setText("添加牌："+card);
         sortList();
     }
 
